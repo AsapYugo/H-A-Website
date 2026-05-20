@@ -1,0 +1,1453 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>H&A Service & Entrümpelung — Zuverlässig. Ordentlich. Fair.</title>
+<meta name="description" content="H&A Service & Entrümpelung: Entrümpelung, Malerarbeiten, Tapeten-, Laminat- und Fliesenentfernung sowie Reinigung. Lokal, zuverlässig und fair." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ============ tokens ============ */
+:root{
+  --ink:#0A0A0A;
+  --ink-soft:#171717;
+  --ink-2:#262626;
+  --line:#E7E5E0;
+  --line-2:#1c1c1c;
+  --mute:#6B6B66;
+  --mute-2:#8a8a85;
+  --paper:#F4F2EC;        /* warm off-white */
+  --paper-2:#EDEAE2;
+  --card:#FFFFFF;
+  --accent:#FFD60A;        /* refined yellow */
+  --accent-ink:#0A0A0A;
+  --ring: 0 0 0 1px rgba(10,10,10,.08);
+  --radius:14px;
+  --radius-lg:22px;
+  --maxw:1320px;
+  --pad:clamp(20px,4vw,56px);
+  --easing: cubic-bezier(.2,.8,.2,1);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:"Geist", system-ui, sans-serif;
+  font-size:16px;
+  line-height:1.55;
+  color:var(--ink);
+  background:var(--paper);
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+h1,h2,h3,h4{margin:0;font-weight:500;letter-spacing:-0.02em;line-height:1.02}
+p{margin:0}
+
+.serif{font-family:"Instrument Serif", "Times New Roman", serif; font-weight:400; letter-spacing:-0.01em}
+.serif-i{font-family:"Instrument Serif", serif; font-style:italic; font-weight:400}
+.mono{font-family:"Geist Mono", ui-monospace, monospace; letter-spacing:0}
+
+.wrap{max-width:var(--maxw); margin:0 auto; padding-left:var(--pad); padding-right:var(--pad)}
+
+.eyebrow{
+  display:inline-flex; align-items:center; gap:12px;
+  font-family:"Geist Mono", monospace;
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--mute);
+}
+.eyebrow::before{
+  content:""; width:6px; height:6px; border-radius:50%; background:var(--accent);
+  box-shadow:0 0 0 4px rgba(255,214,10,.18);
+}
+
+/* ============ top bar ============ */
+.topbar{
+  background:var(--ink); color:#e9e8e4;
+  font-family:"Geist Mono", monospace;
+  font-size:12px; letter-spacing:.04em;
+}
+.topbar .wrap{
+  display:flex; align-items:center; justify-content:space-between;
+  min-height:36px; gap:18px;
+}
+.topbar .meta{display:flex; gap:22px; flex-wrap:wrap; align-items:center}
+.topbar .meta span{opacity:.8}
+.topbar .quick{display:flex; gap:18px; align-items:center}
+.topbar .quick a{display:inline-flex; gap:8px; align-items:center; transition:color .2s}
+.topbar .quick a:hover{color:var(--accent)}
+.topbar .quick svg{width:13px;height:13px}
+
+/* ============ nav ============ */
+.nav{
+  position:sticky; top:0; z-index:50;
+  background:rgba(244,242,236,.72);
+  backdrop-filter:saturate(140%) blur(14px);
+  -webkit-backdrop-filter:saturate(140%) blur(14px);
+  border-bottom:1px solid rgba(10,10,10,.08);
+}
+.nav .wrap{
+  display:flex; align-items:center; justify-content:space-between;
+  min-height:72px; gap:24px;
+}
+.brand{display:flex; align-items:center; gap:12px}
+.brand .mark{
+  width:40px; height:40px; background:#fff;
+  display:grid; place-items:center; overflow:hidden;
+  border-radius:10px; box-shadow:var(--ring);
+}
+.brand .mark img{width:100%; height:100%; object-fit:contain; padding:3px}
+.brand .wm{display:flex; flex-direction:column; line-height:1.05}
+.brand .wm b{font-weight:600; font-size:15px; letter-spacing:-0.01em}
+.brand .wm span{font-family:"Geist Mono", monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-top:3px}
+
+.navlinks{
+  display:flex; gap:4px; align-items:center;
+  padding:5px; border-radius:999px; background:rgba(10,10,10,.04);
+  border:1px solid rgba(10,10,10,.06);
+}
+.navlinks a{
+  font-size:14px; font-weight:500; color:var(--ink-2);
+  padding:8px 14px; border-radius:999px; transition:background .25s, color .25s;
+}
+.navlinks a:hover{background:rgba(10,10,10,.06); color:var(--ink)}
+
+.nav-cta{
+  display:inline-flex; gap:10px; align-items:center;
+  background:var(--ink); color:#fff;
+  padding:11px 18px 11px 20px; font-size:14px; font-weight:500;
+  border-radius:999px;
+  transition:transform .25s var(--easing), background .25s;
+}
+.nav-cta .dot{width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px rgba(255,214,10,.25)}
+.nav-cta:hover{transform:translateY(-1px); background:#1a1a1a}
+.burger{display:none; width:40px; height:40px; border-radius:999px; background:rgba(10,10,10,.06); place-items:center}
+.burger span{display:block; width:16px; height:1.5px; background:var(--ink); position:relative}
+.burger span::before,.burger span::after{content:""; position:absolute; left:0; right:0; height:1.5px; background:var(--ink)}
+.burger span::before{top:-5px} .burger span::after{top:5px}
+
+/* ============ hero ============ */
+.hero{position:relative; padding:clamp(40px,7vw,90px) 0 clamp(60px,8vw,120px)}
+.hero .wrap{position:relative}
+
+.hero-meta{
+  display:flex; align-items:center; justify-content:space-between; gap:20px;
+  margin-bottom:clamp(40px,6vw,72px); flex-wrap:wrap;
+}
+.hero-meta .loc{display:flex; align-items:center; gap:10px; font-family:"Geist Mono",monospace; font-size:12px; letter-spacing:.04em; color:var(--mute)}
+.hero-meta .loc svg{width:14px;height:14px}
+.hero-meta .now{display:flex; align-items:center; gap:10px; font-family:"Geist Mono",monospace; font-size:12px; color:var(--mute)}
+.hero-meta .now .pulse{width:8px;height:8px;border-radius:50%; background:#26d07c; box-shadow:0 0 0 4px rgba(38,208,124,.18); animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(38,208,124,.18)} 50%{box-shadow:0 0 0 8px rgba(38,208,124,0)}}
+
+.hero h1{
+  font-weight:400;
+  font-size:clamp(56px, 11.5vw, 180px);
+  letter-spacing:-0.045em;
+  line-height:.92;
+  font-family:"Geist", sans-serif;
+}
+.hero h1 .l{display:block}
+.hero h1 .i{font-family:"Instrument Serif", serif; font-style:italic; font-weight:400; letter-spacing:-0.015em}
+.hero h1 .hl{
+  position:relative; display:inline-block;
+  background:linear-gradient(180deg, transparent 62%, var(--accent) 62%, var(--accent) 94%, transparent 94%);
+  padding:0 .05em;
+}
+
+/* hero bottom row */
+.hero-row{
+  display:grid; grid-template-columns: 1fr 1fr 1fr; gap:clamp(24px,3vw,48px);
+  margin-top:clamp(44px,6vw,72px); align-items:end;
+}
+.hero-row .sub{font-size:17px; max-width:32ch; color:var(--ink-2); line-height:1.5}
+.hero-row .sub .kicker{display:block; font-family:"Geist Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute); margin-bottom:12px}
+.hero-row .ctas{display:flex; gap:10px; flex-wrap:wrap}
+.btn{
+  display:inline-flex; align-items:center; gap:10px;
+  padding:14px 22px; font-size:14px; font-weight:500;
+  border-radius:999px; transition:transform .25s var(--easing), background .2s, color .2s, box-shadow .2s;
+  border:1px solid transparent;
+}
+.btn svg{width:15px;height:15px}
+.btn-primary{background:var(--ink); color:#fff}
+.btn-primary:hover{background:#1a1a1a; transform:translateY(-1px)}
+.btn-ghost{background:transparent; color:var(--ink); border-color:rgba(10,10,10,.2)}
+.btn-ghost:hover{background:rgba(10,10,10,.06); transform:translateY(-1px)}
+
+.hero-row .meta-stack{display:flex; flex-direction:column; gap:16px; font-family:"Geist Mono",monospace; font-size:12px; color:var(--mute)}
+.hero-row .meta-stack .m{display:flex; justify-content:space-between; gap:14px; padding-bottom:12px; border-bottom:1px solid rgba(10,10,10,.1)}
+.hero-row .meta-stack .m:last-child{border-bottom:0}
+.hero-row .meta-stack .m b{color:var(--ink); font-family:"Geist",sans-serif; font-weight:500; font-size:14px}
+
+/* marquee band */
+.marquee{
+  background:var(--ink); color:#e9e8e4; overflow:hidden;
+  border-top:1px solid rgba(255,255,255,.08);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  padding:22px 0;
+}
+.marquee-track{display:flex; gap:64px; white-space:nowrap; animation:marq 40s linear infinite; font-size:clamp(24px, 3vw, 36px); font-weight:400; letter-spacing:-0.02em}
+.marquee-track span{display:inline-flex; align-items:center; gap:22px}
+.marquee-track .dot{width:10px;height:10px;border-radius:50%; background:var(--accent); display:inline-block}
+.marquee-track .i{font-family:"Instrument Serif",serif; font-style:italic; color:var(--accent)}
+@keyframes marq{from{transform:translateX(0)} to{transform:translateX(-50%)}}
+
+/* ============ services ============ */
+.services{padding:clamp(90px, 10vw, 140px) 0}
+.svc-head{display:grid; grid-template-columns: 1fr 1fr; gap:clamp(24px,4vw,64px); align-items:end; margin-bottom:60px}
+.svc-head h2{
+  font-size:clamp(48px, 7vw, 104px); font-weight:400; letter-spacing:-0.035em;
+}
+.svc-head h2 .i{font-family:"Instrument Serif",serif; font-style:italic}
+.svc-head .note{color:var(--mute); font-size:16px; max-width:46ch}
+.svc-head .note .count{display:inline-flex; align-items:center; gap:10px; font-family:"Geist Mono",monospace; font-size:12px; color:var(--ink); padding:6px 10px; border-radius:999px; background:rgba(10,10,10,.06); margin-bottom:16px}
+
+/* sticky-index + cards layout */
+.svc-layout{display:grid; grid-template-columns: 260px 1fr; gap:48px; align-items:start}
+.svc-index{position:sticky; top:92px; display:flex; flex-direction:column; gap:2px}
+.svc-index .idx{
+  display:flex; align-items:center; gap:14px; padding:12px 14px;
+  border-radius:10px; cursor:pointer; transition:background .2s;
+  font-size:14px; color:var(--mute);
+}
+.svc-index .idx:hover, .svc-index .idx.on{background:rgba(10,10,10,.06); color:var(--ink)}
+.svc-index .idx .n{font-family:"Geist Mono",monospace; font-size:11px; width:24px}
+.svc-index .idx .bar{flex:1; height:1px; background:rgba(10,10,10,.12); transform-origin:left; transform:scaleX(.2); transition:transform .25s}
+.svc-index .idx.on .bar, .svc-index .idx:hover .bar{transform:scaleX(1); background:var(--ink)}
+
+.svc-cards{display:grid; grid-template-columns:repeat(2,1fr); gap:18px}
+.svc{
+  background:var(--card); border:1px solid rgba(10,10,10,.08);
+  border-radius:var(--radius-lg); padding:28px;
+  display:flex; flex-direction:column; min-height:320px;
+  position:relative; overflow:hidden; isolation:isolate;
+  transition:transform .4s var(--easing), border-color .25s;
+}
+.svc:hover{transform:translateY(-4px); border-color:rgba(10,10,10,.2)}
+.svc::after{
+  content:""; position:absolute; inset:auto -40% -60% auto; width:260px; height:260px;
+  background:radial-gradient(closest-side, rgba(255,214,10,.35), transparent 70%);
+  opacity:0; transition:opacity .45s; pointer-events:none; z-index:-1;
+}
+.svc:hover::after{opacity:1}
+.svc .row-top{display:flex; align-items:center; justify-content:space-between; margin-bottom:40px}
+.svc .num{font-family:"Geist Mono",monospace; font-size:12px; color:var(--mute)}
+.svc .ic{
+  width:42px;height:42px;border-radius:12px; background:var(--paper-2);
+  display:grid; place-items:center; transition:background .3s, color .3s;
+}
+.svc:hover .ic{background:var(--ink); color:var(--accent)}
+.svc .ic svg{width:20px;height:20px}
+.svc h3{font-size:30px; font-weight:500; letter-spacing:-0.02em; margin-top:auto}
+.svc p{color:var(--mute); font-size:14.5px; margin-top:10px; max-width:38ch; line-height:1.55}
+.svc .tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:18px}
+.svc .tags span{font-family:"Geist Mono",monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); padding:5px 9px; border-radius:999px; border:1px solid rgba(10,10,10,.12)}
+.svc .arr{
+  position:absolute; top:24px; right:24px; width:34px; height:34px; border-radius:50%;
+  border:1px solid rgba(10,10,10,.12); display:grid; place-items:center;
+  transition:background .25s, color .25s, transform .25s var(--easing);
+}
+.svc:hover .arr{background:var(--accent); border-color:var(--accent); transform:rotate(-45deg)}
+.svc .arr svg{width:14px;height:14px}
+
+.svc.feature{
+  grid-column:1 / -1;
+  background:var(--ink); color:#fff;
+  border-color:var(--ink);
+}
+.svc.feature p{color:#a6a6a0}
+.svc.feature .ic{background:#1a1a1a; color:var(--accent)}
+.svc.feature .tags span{color:#a6a6a0; border-color:rgba(255,255,255,.15)}
+.svc.feature .arr{border-color:rgba(255,255,255,.2); color:#fff}
+.svc.feature:hover{transform:translateY(-2px)}
+.svc.feature:hover .arr{background:var(--accent); color:var(--ink); border-color:var(--accent)}
+.svc.feature .row-top{margin-bottom:20px}
+.svc.feature .feat-body{display:grid; grid-template-columns:1.2fr 1fr; gap:40px; align-items:end; margin-top:auto}
+.svc.feature h3{font-size:clamp(40px,5vw,72px)}
+.svc.feature .bullets{display:grid; gap:10px; font-family:"Geist Mono",monospace; font-size:12px; color:#d7d7d2}
+.svc.feature .bullets div{display:flex; gap:10px; align-items:center}
+.svc.feature .bullets div::before{content:""; width:6px; height:6px; background:var(--accent); border-radius:50%; flex-shrink:0}
+
+/* ============ process ============ */
+.process{padding:clamp(80px,9vw,130px) 0; background:var(--paper-2); border-top:1px solid rgba(10,10,10,.08); border-bottom:1px solid rgba(10,10,10,.08)}
+.process .head{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:end; margin-bottom:56px}
+.process h2{font-size:clamp(44px,6vw,88px); font-weight:400; letter-spacing:-0.035em}
+.process h2 .i{font-family:"Instrument Serif",serif; font-style:italic}
+.process .blurb{color:var(--mute); max-width:48ch}
+.process-grid{
+  display:grid; grid-template-columns:repeat(4,1fr);
+  border-top:1px solid rgba(10,10,10,.12);
+  counter-reset:step;
+}
+.step{
+  padding:28px 24px 36px 0; border-right:1px solid rgba(10,10,10,.12);
+  position:relative;
+}
+.step:last-child{border-right:0; padding-right:0}
+.step:not(:first-child){padding-left:28px}
+.step .tn{font-family:"Geist Mono",monospace; font-size:12px; color:var(--mute)}
+.step h4{font-size:22px; font-weight:500; letter-spacing:-0.015em; margin-top:36px}
+.step p{font-size:14px; color:var(--mute); margin-top:10px; max-width:30ch; line-height:1.5}
+.step .arr{margin-top:18px; opacity:.4}
+.step .arr svg{width:22px;height:22px}
+
+/* ============ why ============ */
+.why{padding:clamp(90px,10vw,140px) 0}
+.why .head{margin-bottom:72px; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:end}
+.why h2{font-size:clamp(48px,7vw,104px); font-weight:400; letter-spacing:-0.035em; line-height:.95}
+.why h2 .i{font-family:"Instrument Serif",serif; font-style:italic}
+.why-grid{display:grid; grid-template-columns:1.3fr 1fr; gap:clamp(32px,4vw,64px); align-items:start}
+
+.big-fig{
+  background:var(--ink); color:#fff;
+  border-radius:var(--radius-lg); padding:44px;
+  position:relative; overflow:hidden; isolation:isolate;
+  aspect-ratio: 4/5;
+  display:flex; flex-direction:column; justify-content:space-between;
+}
+.big-fig::before{
+  content:""; position:absolute; inset:auto -20% -30% -20%; height:70%;
+  background:radial-gradient(ellipse at center, rgba(255,214,10,.22), transparent 60%);
+  z-index:-1;
+}
+.big-fig .tag{display:inline-flex; align-items:center; gap:8px; font-family:"Geist Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:#a6a6a0}
+.big-fig .tag::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--accent)}
+.big-fig .n{
+  font-family:"Instrument Serif",serif; font-style:italic; font-weight:400;
+  font-size:clamp(140px, 22vw, 280px); line-height:.8; letter-spacing:-0.04em;
+}
+.big-fig .n .pct{color:var(--accent); font-style:normal; font-family:"Geist",sans-serif; font-weight:300}
+.big-fig .cap{font-size:14px; color:#d7d7d2; max-width:26ch}
+
+.why-list{display:grid; gap:0}
+.why-list .item{
+  padding:26px 4px; border-top:1px solid rgba(10,10,10,.12);
+  display:grid; grid-template-columns:64px 1fr auto; gap:20px; align-items:start;
+  cursor:pointer; position:relative;
+}
+.why-list .item:last-child{border-bottom:1px solid rgba(10,10,10,.12)}
+.why-list .item .n{font-family:"Geist Mono",monospace; font-size:12px; color:var(--mute); padding-top:4px}
+.why-list .item h4{font-size:22px; font-weight:500; letter-spacing:-0.015em; margin-bottom:6px}
+.why-list .item p{font-size:14.5px; color:var(--mute); max-width:52ch; line-height:1.55}
+.why-list .item .plus{width:32px; height:32px; border-radius:50%; border:1px solid rgba(10,10,10,.15); display:grid; place-items:center; color:var(--mute); transition:background .25s, color .25s, transform .25s var(--easing)}
+.why-list .item:hover .plus{background:var(--accent); color:var(--ink); border-color:var(--accent); transform:rotate(90deg)}
+.why-list .item .plus svg{width:14px;height:14px}
+
+/* ============ about ============ */
+.about{padding:clamp(90px,10vw,140px) 0; background:var(--ink); color:#e9e8e4; position:relative; overflow:hidden}
+.about::before{
+  content:""; position:absolute; top:-10%; right:-10%; width:600px; height:600px;
+  background:radial-gradient(closest-side, rgba(255,214,10,.10), transparent 70%);
+  pointer-events:none;
+}
+.about .eyebrow{color:#a6a6a0}
+.about .eyebrow::before{background:var(--accent); box-shadow:0 0 0 4px rgba(255,214,10,.2)}
+
+.about-grid{display:grid; grid-template-columns:1.15fr 1fr; gap:clamp(40px,6vw,96px); align-items:center}
+.about h2{font-size:clamp(44px,6vw,96px); font-weight:400; letter-spacing:-0.035em; margin-top:18px; color:#fff}
+.about h2 .i{font-family:"Instrument Serif",serif; font-style:italic; color:var(--accent)}
+.about .lead{color:#c2c2bc; font-size:17px; margin-top:26px; max-width:52ch; line-height:1.6}
+.about .lead + .lead{margin-top:14px}
+.about .sig{display:flex; align-items:center; gap:14px; margin-top:36px; padding-top:24px; border-top:1px solid rgba(255,255,255,.12); max-width:fit-content}
+.about .sig .init{width:48px; height:48px; border-radius:50%; background:var(--accent); color:var(--ink); display:grid; place-items:center; font-weight:600; font-size:14px}
+.about .sig b{font-weight:500; color:#fff; display:block}
+.about .sig span{font-family:"Geist Mono",monospace; font-size:11px; color:#a6a6a0; letter-spacing:.05em}
+
+.facts{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.fact{
+  background:#121212; border:1px solid rgba(255,255,255,.08);
+  border-radius:var(--radius-lg); padding:26px;
+  aspect-ratio:1/1; display:flex; flex-direction:column; justify-content:space-between;
+  transition:transform .35s var(--easing), background .25s;
+}
+.fact:hover{transform:translateY(-4px); background:#161616}
+.fact .t{font-family:"Geist Mono",monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:#a6a6a0}
+.fact b{font-family:"Instrument Serif",serif; font-style:italic; font-weight:400; font-size:clamp(56px, 7vw, 96px); line-height:.9; color:#fff; letter-spacing:-0.02em}
+.fact .sub{font-size:13px; color:#a6a6a0; max-width:22ch; line-height:1.45}
+.fact.accent{background:var(--accent); color:var(--ink); border-color:var(--accent)}
+.fact.accent .t, .fact.accent .sub{color:rgba(10,10,10,.65)}
+.fact.accent b{color:var(--ink); font-family:"Geist",sans-serif; font-style:normal; font-weight:300}
+
+/* ============ region ============ */
+.region{padding:28px 0; border-bottom:1px solid rgba(10,10,10,.1)}
+.region .wrap{display:flex; align-items:center; gap:28px; flex-wrap:wrap; justify-content:space-between}
+.region .lbl{font-family:"Geist Mono",monospace; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); display:flex; align-items:center; gap:10px}
+.region .lbl::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 3px rgba(255,214,10,.18)}
+.region .list{display:flex; flex-wrap:wrap; gap:6px 8px; flex:1; justify-content:center}
+.region .list span{font-size:13px; color:var(--ink-2); padding:6px 12px; border-radius:999px; border:1px solid rgba(10,10,10,.12); transition:background .2s, color .2s, border-color .2s}
+.region .list span:hover{background:var(--ink); color:#fff; border-color:var(--ink)}
+
+/* ============ contact ============ */
+.contact{padding:clamp(90px,10vw,140px) 0; position:relative; overflow:hidden}
+.contact .wrap{position:relative}
+.contact .bg-word{
+  position:absolute; left:-4%; bottom:-10%;
+  font-family:"Instrument Serif",serif; font-style:italic; font-weight:400;
+  font-size:clamp(180px, 30vw, 460px); line-height:.85; letter-spacing:-0.04em;
+  color:transparent; -webkit-text-stroke:1px rgba(10,10,10,.08);
+  pointer-events:none; user-select:none;
+}
+.contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:clamp(40px,5vw,80px); align-items:start; position:relative}
+.contact h2{font-size:clamp(48px,7vw,112px); font-weight:400; letter-spacing:-0.035em; margin-top:18px}
+.contact h2 .i{font-family:"Instrument Serif",serif; font-style:italic}
+.contact .lead{color:var(--mute); font-size:17px; max-width:46ch; margin-top:22px; line-height:1.6}
+
+.ccards{display:grid; gap:12px; margin-top:36px}
+.ccard{
+  display:grid; grid-template-columns:48px 1fr auto; align-items:center; gap:18px;
+  padding:18px 22px; background:#fff; border-radius:var(--radius);
+  border:1px solid rgba(10,10,10,.08);
+  transition:transform .3s var(--easing), border-color .25s;
+}
+.ccard:hover{transform:translateY(-2px); border-color:var(--ink)}
+.ccard .ic{width:42px; height:42px; border-radius:10px; background:var(--paper-2); display:grid; place-items:center; transition:background .25s, color .25s}
+.ccard:hover .ic{background:var(--ink); color:var(--accent)}
+.ccard .ic svg{width:18px;height:18px}
+.ccard .t{font-family:"Geist Mono",monospace; font-size:11px; letter-spacing:.08em; color:var(--mute); text-transform:uppercase}
+.ccard b{display:block; font-weight:500; font-size:18px; margin-top:4px; letter-spacing:-0.01em}
+.ccard .go{width:32px; height:32px; border-radius:50%; border:1px solid rgba(10,10,10,.12); display:grid; place-items:center; transition:background .25s, border-color .25s, color .25s, transform .25s var(--easing)}
+.ccard:hover .go{background:var(--accent); border-color:var(--accent); transform:rotate(-45deg)}
+.ccard .go svg{width:13px;height:13px}
+
+.hours{
+  margin-top:14px; display:grid; grid-template-columns:1fr 1fr; gap:12px;
+}
+.hours .h{
+  padding:18px 20px; background:var(--paper-2); border-radius:var(--radius);
+  display:flex; justify-content:space-between; align-items:center;
+}
+.hours .h .t{font-family:"Geist Mono",monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--mute)}
+.hours .h b{font-weight:500; font-size:15px}
+
+/* form */
+.form{
+  background:#fff; padding:clamp(28px,3vw,40px);
+  border-radius:var(--radius-lg); border:1px solid rgba(10,10,10,.08);
+  position:relative;
+  box-shadow: 0 1px 0 rgba(10,10,10,.02), 0 20px 40px -20px rgba(10,10,10,.12);
+}
+.form-head{display:flex; justify-content:space-between; align-items:flex-start; gap:14px; margin-bottom:24px}
+.form h3{font-size:26px; font-weight:500; letter-spacing:-0.02em}
+.form p.ftag{color:var(--mute); font-size:14px; margin-top:6px; max-width:36ch}
+.form-head .badge{font-family:"Geist Mono",monospace; font-size:11px; letter-spacing:.12em; text-transform:uppercase; padding:6px 10px; background:var(--paper-2); border-radius:999px; color:var(--ink)}
+.form .row{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+.field{display:flex; flex-direction:column; gap:6px; margin-bottom:12px}
+.field label{font-family:"Geist Mono",monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--mute)}
+.field input, .field select, .field textarea{
+  font:inherit; padding:13px 14px; border:1px solid rgba(10,10,10,.14);
+  background:#fafaf7; border-radius:10px; color:var(--ink); transition:border-color .2s, background .2s, box-shadow .2s;
+}
+.field input:focus, .field select:focus, .field textarea:focus{outline:none; border-color:var(--ink); background:#fff; box-shadow:0 0 0 4px rgba(10,10,10,.06)}
+.field textarea{min-height:108px; resize:vertical}
+.chips{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px}
+.chip{
+  font-size:12.5px; padding:8px 12px; border:1px solid rgba(10,10,10,.14); background:#fff; cursor:pointer; border-radius:999px;
+  font-weight:500; transition:background .15s, color .15s, border-color .15s; user-select:none;
+}
+.chip:hover{border-color:var(--ink)}
+.chip.on{background:var(--ink); color:#fff; border-color:var(--ink)}
+.form .submit{
+  width:100%; margin-top:6px;
+  padding:16px; background:var(--ink); color:#fff; border-radius:999px;
+  font-size:14px; font-weight:500; transition:background .2s, transform .25s var(--easing);
+  display:inline-flex; justify-content:center; gap:12px; align-items:center;
+}
+.form .submit:hover{background:#1a1a1a; transform:translateY(-1px)}
+.form .note{font-size:12px; color:var(--mute); margin-top:12px; text-align:center; font-family:"Geist Mono",monospace; letter-spacing:.02em}
+.form .ok{display:none; margin-top:14px; padding:14px; background:rgba(38,208,124,.1); border:1px solid rgba(38,208,124,.4); border-radius:10px; font-size:14px; color:#0a6a3d}
+.form.sent .ok{display:block}
+
+/* ============ footer ============ */
+footer{background:var(--ink); color:#9e9e97; padding:72px 0 28px; position:relative; overflow:hidden}
+footer::before{
+  content:""; position:absolute; top:-40%; left:50%; transform:translateX(-50%);
+  width:120%; aspect-ratio:1/1;
+  background:radial-gradient(closest-side, rgba(255,214,10,.05), transparent 70%);
+  pointer-events:none;
+}
+footer .wordmark{
+  font-family:"Instrument Serif",serif; font-style:italic; font-weight:400;
+  font-size:clamp(90px, 18vw, 260px); line-height:.85; letter-spacing:-0.04em;
+  color:#fff; margin-bottom:48px;
+}
+footer .wordmark .amp{color:var(--accent)}
+footer .top{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px; padding-top:40px; border-top:1px solid rgba(255,255,255,.12)}
+footer h5{color:#fff; font-family:"Geist Mono",monospace; font-size:11px; letter-spacing:.14em; text-transform:uppercase; margin-bottom:16px; font-weight:500}
+footer ul{list-style:none; padding:0; margin:0; display:grid; gap:10px}
+footer ul a{font-size:14px; transition:color .15s; color:#9e9e97}
+footer ul a:hover{color:var(--accent)}
+footer .tag{color:#9e9e97; font-size:14px; margin-top:18px; max-width:34ch; line-height:1.6}
+footer .brand.foot .mark{background:#fff}
+footer .brand.foot .wm b{color:#fff}
+footer .brand.foot .wm span{color:#9e9e97}
+footer .bottom{
+  margin-top:56px; padding-top:22px; border-top:1px solid rgba(255,255,255,.12);
+  display:flex; justify-content:space-between; gap:20px; font-family:"Geist Mono",monospace; font-size:11px; color:#6e6e6a; letter-spacing:.05em;
+  flex-wrap:wrap;
+}
+footer .bottom a:hover{color:var(--accent)}
+
+/* ============ reveal ============ */
+.reveal{opacity:0; transform:translateY(24px); transition:opacity .9s var(--easing), transform .9s var(--easing)}
+.reveal.in{opacity:1; transform:none}
+
+/* scroll progress bar */
+.scroll-progress{
+  position:fixed; top:0; left:0; right:0; height:2px; z-index:200;
+  background:transparent; pointer-events:none;
+}
+.scroll-progress .bar{
+  height:100%; width:0%;
+  background:linear-gradient(90deg, var(--accent) 0%, #FF7A1A 100%);
+  transition:width .12s linear;
+  box-shadow:0 0 12px rgba(255,214,10,.5);
+}
+
+/* split-word hero reveal */
+.split-line{overflow:hidden; display:block}
+.split-word{display:inline-block; transform:translateY(105%); transition:transform 1s var(--easing)}
+.split-word.in{transform:translateY(0)}
+.split-word:nth-child(2){transition-delay:.08s}
+.split-word:nth-child(3){transition-delay:.16s}
+.split-word:nth-child(4){transition-delay:.24s}
+.split-word:nth-child(5){transition-delay:.32s}
+
+/* parallax */
+[data-parallax]{will-change:transform}
+
+/* hl underline draw-in */
+.hl{background-size:0% 32% !important; background-repeat:no-repeat; background-position:left 68% ; transition:background-size 1.2s var(--easing) .5s}
+.hl.in{background-size:100% 32% !important}
+
+/* sticky-scale service cards */
+.svc{transform-origin:center top}
+
+/* card tilt on mouse */
+.svc{--mx:50%; --my:50%}
+.svc::before{
+  content:""; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+  background:radial-gradient(300px circle at var(--mx) var(--my), rgba(255,214,10,.12), transparent 60%);
+  opacity:0; transition:opacity .3s;
+}
+.svc:hover::before{opacity:1}
+
+/* marquee speed-up on scroll */
+.marquee-track{animation-play-state:running}
+
+/* magnetic buttons */
+.btn, .nav-cta{will-change:transform}
+
+/* section-start label (sticky for current section) */
+.section-label{
+  position:fixed; left:calc(var(--pad) * .8); top:50%; transform:translateY(-50%) rotate(-90deg); transform-origin:left top;
+  font-family:"Geist Mono",monospace; font-size:10px; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--mute); z-index:40; pointer-events:none;
+  mix-blend-mode:difference; color:#aaa;
+  transition:opacity .35s;
+  white-space:nowrap;
+}
+.section-label.hide{opacity:0}
+@media (max-width:1200px){ .section-label{display:none} }
+
+/* count-up */
+.cup{display:inline-block; min-width:1ch}
+
+/* hero bg moving gradient */
+.hero::before{
+  content:""; position:absolute; inset:0; pointer-events:none; z-index:-1;
+  background:
+    radial-gradient(600px 400px at 85% 15%, rgba(255,214,10,.18), transparent 60%),
+    radial-gradient(500px 500px at 10% 85%, rgba(255,214,10,.08), transparent 60%);
+  transform:translate3d(0,0,0);
+  will-change:transform;
+}
+.hero{position:relative; isolation:isolate}
+
+/* letter spacing on scroll (about h2) */
+.about h2{transition:letter-spacing .6s var(--easing)}
+
+/* chip reveal stagger */
+.chip{opacity:0; transform:translateY(8px); transition:opacity .5s var(--easing), transform .5s var(--easing)}
+.form.in-view .chip{opacity:1; transform:none}
+.form.in-view .chip:nth-child(1){transition-delay:.05s}
+.form.in-view .chip:nth-child(2){transition-delay:.1s}
+.form.in-view .chip:nth-child(3){transition-delay:.15s}
+.form.in-view .chip:nth-child(4){transition-delay:.2s}
+.form.in-view .chip:nth-child(5){transition-delay:.25s}
+.form.in-view .chip:nth-child(6){transition-delay:.3s}
+
+/* process steps connect line */
+.process-grid{position:relative}
+.process-grid::before{
+  content:""; position:absolute; left:0; right:0; top:0; height:1px;
+  background:linear-gradient(90deg, var(--ink) 0%, var(--ink) var(--p,0%), rgba(10,10,10,.12) var(--p,0%));
+  transition:--p 1s var(--easing);
+}
+
+/* big-fig number pop */
+.big-fig .n{transform:scale(.85); opacity:0; transition:transform 1.1s var(--easing), opacity .8s}
+.big-fig.in .n{transform:scale(1); opacity:1}
+
+/* nav shrink on scroll */
+.nav{transition:min-height .3s var(--easing), background .3s}
+.nav.shrunk .wrap{min-height:60px}
+.nav.shrunk{background:rgba(244,242,236,.92); box-shadow:0 1px 20px rgba(0,0,0,.04)}
+
+/* footer wordmark reveal */
+footer .wordmark{opacity:.0; transform:translateY(30px); transition:opacity 1.2s var(--easing), transform 1.2s var(--easing)}
+footer .wordmark.in{opacity:1; transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important; transition:none !important}
+  .split-word{transform:none !important}
+}
+
+/* ============ responsive ============ */
+@media (max-width:1080px){
+  .svc-layout{grid-template-columns:1fr}
+  .svc-index{position:static; flex-direction:row; overflow-x:auto; gap:4px; padding-bottom:8px}
+  .svc-index .idx{flex-shrink:0}
+  .svc-index .idx .bar{display:none}
+  .why-grid{grid-template-columns:1fr}
+  .big-fig{aspect-ratio:auto; padding:32px; min-height:400px}
+  .about-grid{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
+  .hero-row{grid-template-columns:1fr}
+  .process-grid{grid-template-columns:repeat(2,1fr)}
+  .step:nth-child(2){border-right:0}
+  .step{border-bottom:1px solid rgba(10,10,10,.12); padding-bottom:30px; margin-bottom:30px}
+  .step:nth-last-child(-n+2){border-bottom:0; margin-bottom:0}
+  .svc-head, .process .head, .why .head{grid-template-columns:1fr}
+  footer .top{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .navlinks{display:none}
+  .burger{display:grid}
+  .topbar .meta span:nth-child(n+2){display:none}
+  .svc-cards{grid-template-columns:1fr}
+  .svc.feature .feat-body{grid-template-columns:1fr}
+  .facts{grid-template-columns:1fr}
+  .hours{grid-template-columns:1fr}
+  .form .row{grid-template-columns:1fr}
+  footer .top{grid-template-columns:1fr}
+  .nav-cta span{display:none}
+  .nav-cta{padding:11px 14px}
+}
+
+/* ============ tweaks ============ */
+.tweaks{
+  position:fixed; right:16px; bottom:16px; z-index:100;
+  background:#fff; border:1px solid rgba(10,10,10,.12); padding:18px;
+  border-radius:16px;
+  display:none; flex-direction:column; gap:14px; min-width:260px;
+  box-shadow:0 20px 40px -20px rgba(10,10,10,.3), 0 2px 6px rgba(10,10,10,.06);
+}
+.tweaks.open{display:flex}
+.tweaks h6{font-family:"Geist Mono",monospace; font-size:11px; letter-spacing:.18em; margin:0; color:var(--mute); text-transform:uppercase}
+.tweaks .grp{display:flex; flex-direction:column; gap:8px}
+.tweaks .swatches{display:flex; gap:8px}
+.tweaks .swatch{width:28px; height:28px; border-radius:999px; border:2px solid transparent; cursor:pointer; box-shadow:inset 0 0 0 1px rgba(0,0,0,.1)}
+.tweaks .swatch.on{border-color:var(--ink)}
+.tweaks label{font-family:"Geist Mono",monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute)}
+.tweaks select{font:inherit; padding:8px 10px; border:1px solid rgba(10,10,10,.14); border-radius:8px; background:#fff}
+</style>
+</head>
+<body>
+
+<!-- ========== TOP BAR ========== -->
+<div class="topbar">
+  <div class="wrap">
+    <div class="meta">
+      <span>Zuverlässig. Ordentlich. Fair.</span>
+      <span>Mo–Sa · 07:00 – 19:00</span>
+      <span>Einsatz bundesweit</span>
+    </div>
+    <div class="quick">
+      <a href="tel:+4915567336156">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1.05.37 2.07.73 3.06a2 2 0 0 1-.45 2.11L8.09 10.09a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.11-.45c.99.36 2.01.6 3.06.73A2 2 0 0 1 22 16.92z"/></svg>
+        015567336156
+      </a>
+      <a href="/cdn-cgi/l/email-protection#ef86818980af9c8a9d99868c8ac2878ec18c8082">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <span class="__cf_email__" data-cfemail="30595e565f70435542465953551d58511e535f5d">[email&#160;protected]</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ========== NAV ========== -->
+<nav class="nav">
+  <div class="wrap">
+    <a href="#top" class="brand">
+      <div class="mark"><img src="./97449.jpg" alt=""></div>
+      <div class="wm"><b>H&amp;A Service</b><span>Entrümpelung · Renovierung</span></div>
+    </a>
+    <div class="navlinks">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#ablauf">Ablauf</a>
+      <a href="#warum">Warum wir</a>
+      <a href="#ueber">Über uns</a>
+      <a href="#kontakt">Kontakt</a>
+    </div>
+    <a href="#kontakt" class="nav-cta">
+      <span class="dot"></span><span>Angebot anfragen</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </a>
+    <button class="burger" aria-label="Menü"><span></span></button>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-meta">
+      <span class="loc">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Einsatzgebiet · Deutschland
+      </span>
+      <span class="now"><span class="pulse"></span>Verfügbar · Anfragen werden entgegengenommen</span>
+    </div>
+
+    <h1>
+      <span class="l split-line"><span class="split-word">Wir</span> <span class="split-word">packen</span> <span class="split-word i">an.</span></span>
+      <span class="l split-line"><span class="split-word">Bis</span> <span class="split-word">alles</span></span>
+      <span class="l split-line"><span class="split-word hl">sauber</span> <span class="split-word i">übergeben</span> <span class="split-word">ist.</span></span>
+    </h1>
+
+    <div class="hero-row reveal">
+      <p class="sub">
+        <span class="kicker">— Was wir machen</span>
+        Entrümpelung, Maler- und Rückbauarbeiten sowie Übergabereinigung. Ein Team, ein Festpreis, ein Ansprechpartner — von der ersten Besichtigung bis zum besenreinen Schlüssel.
+      </p>
+
+      <div class="ctas">
+        <a href="#kontakt" class="btn btn-primary">
+          Kostenfreies Angebot
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="tel:+4915567336156" class="btn btn-ghost">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1.05.37 2.07.73 3.06a2 2 0 0 1-.45 2.11L8.09 10.09a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.11-.45c.99.36 2.01.6 3.06.73A2 2 0 0 1 22 16.92z"/></svg>
+          Jetzt anrufen
+        </a>
+      </div>
+
+      <div class="meta-stack">
+        <div class="m"><span>Erfahrung</span><b>15+ Jahre</b></div>
+        <div class="m"><span>Reaktionszeit</span><b>≤ 48 h</b></div>
+        <div class="m"><span>Weiterempfehlung</span><b>99 %</b></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ========== MARQUEE ========== -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Entrümpelung <span class="dot"></span></span>
+    <span>Malerarbeiten <span class="i">sauber gestrichen</span></span>
+    <span>Tapetenentfernung <span class="dot"></span></span>
+    <span>Laminat- &amp; Fliesenrückbau</span>
+    <span>Übergabereinigung <span class="i">besenrein</span></span>
+    <span>Festpreis <span class="dot"></span></span>
+    <span>Inhabergeführt</span>
+    <!-- duplicate for loop -->
+    <span>Entrümpelung <span class="dot"></span></span>
+    <span>Malerarbeiten <span class="i">sauber gestrichen</span></span>
+    <span>Tapetenentfernung <span class="dot"></span></span>
+    <span>Laminat- &amp; Fliesenrückbau</span>
+    <span>Übergabereinigung <span class="i">besenrein</span></span>
+    <span>Festpreis <span class="dot"></span></span>
+    <span>Inhabergeführt</span>
+  </div>
+</div>
+
+<!-- ========== REGION ========== -->
+<div class="region">
+  <div class="wrap">
+    <span class="lbl">Einsatzgebiet</span>
+    <div class="list">
+      <span>Berlin</span><span>Potsdam</span><span>Brandenburg</span><span>Hamburg</span>
+      <span>Leipzig</span><span>Dresden</span><span>Magdeburg</span><span>Hannover</span>
+      <span>Umgebung bis 150 km</span>
+    </div>
+  </div>
+</div>
+
+<!-- ========== LEISTUNGEN ========== -->
+<section class="services" id="leistungen">
+  <div class="wrap">
+    <div class="svc-head">
+      <div>
+        <span class="eyebrow">Leistungen · 006</span>
+        <h2 style="margin-top:24px">Sechs Gewerke.<br/><span class="i">Eine Handschrift.</span></h2>
+      </div>
+      <div class="note">
+        <span class="count">01 — 06 · ausgewählt</span>
+        <p>Wir übernehmen, was bei Umzug, Übergabe oder Renovierung wirklich anfällt — von der Räumung über den handwerklichen Rückbau bis zur Übergabereinigung. Alles aus einer Hand, zum Festpreis.</p>
+      </div>
+    </div>
+
+    <div class="svc-layout">
+      <div class="svc-index" id="svcIndex">
+        <a class="idx on" data-t="01"><span class="n">01</span><span>Entrümpelung</span><span class="bar"></span></a>
+        <a class="idx" data-t="02"><span class="n">02</span><span>Malerarbeiten</span><span class="bar"></span></a>
+        <a class="idx" data-t="03"><span class="n">03</span><span>Tapetenentfernung</span><span class="bar"></span></a>
+        <a class="idx" data-t="04"><span class="n">04</span><span>Laminatentfernung</span><span class="bar"></span></a>
+        <a class="idx" data-t="05"><span class="n">05</span><span>Fliesenentfernung</span><span class="bar"></span></a>
+        <a class="idx" data-t="06"><span class="n">06</span><span>Reinigung</span><span class="bar"></span></a>
+      </div>
+
+      <div class="svc-cards">
+
+        <div class="svc feature" data-id="01">
+          <div class="row-top">
+            <span class="num">01 · Kerngeschäft</span>
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7h18l-1.5 12a2 2 0 0 1-2 1.8H6.5a2 2 0 0 1-2-1.8L3 7z"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M9 11v6M15 11v6"/></svg></span>
+          </div>
+          <div class="feat-body">
+            <div>
+              <h3>Entrümpelung <span style="font-family:'Instrument Serif',serif;font-style:italic">&amp;</span> Auflösung</h3>
+              <p style="margin-top:14px">Komplette Wohnungs-, Haus-, Keller- und Nachlassauflösungen. Besenrein, zum Festpreis, auf Wunsch mit Wertanrechnung.</p>
+            </div>
+            <div class="bullets">
+              <div>Wohnungs- &amp; Hausauflösung</div>
+              <div>Nachlass &amp; Messi-Situationen</div>
+              <div>Keller, Dachboden, Garage</div>
+              <div>Sortenreine Entsorgung mit Nachweis</div>
+            </div>
+          </div>
+          <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+
+        <div class="svc" data-id="02">
+          <div class="row-top">
+            <span class="num">02</span>
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 21h16"/><path d="M6 17l6-11 6 11"/><path d="M8 13h8"/></svg></span>
+          </div>
+          <h3>Malerarbeiten</h3>
+          <p>Wände, Decken und Akzentflächen — sauber abgeklebt, zweifach gestrichen. Farbberatung auf Wunsch.</p>
+          <div class="tags"><span>Innenräume</span><span>Farbberatung</span></div>
+          <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+
+        <div class="svc" data-id="03">
+          <div class="row-top">
+            <span class="num">03</span>
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 4h16v6H4z"/><path d="M4 14h10v6H4z"/><path d="M18 14l3 3-3 3"/></svg></span>
+          </div>
+          <h3>Tapetenentfernung</h3>
+          <p>Gründliches Ablösen von Raufaser, Vlies und schwierigen Altbelägen. Wand wird streichfertig übergeben.</p>
+          <div class="tags"><span>Rückstandsfrei</span><span>Streichfertig</span></div>
+          <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+
+        <div class="svc" data-id="04">
+          <div class="row-top">
+            <span class="num">04</span>
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h18M3 12h18M3 16h18"/><path d="M7 8v8M12 8v8M17 8v8"/></svg></span>
+          </div>
+          <h3>Laminatentfernung</h3>
+          <p>Rückbau von Laminat, Klick-Vinyl und Trittschall. Untergrund wird für den nächsten Belag vorbereitet.</p>
+          <div class="tags"><span>Inkl. Entsorgung</span><span>Untergrund bereit</span></div>
+          <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+
+        <div class="svc" data-id="05">
+          <div class="row-top">
+            <span class="num">05</span>
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span>
+          </div>
+          <h3>Fliesenentfernung</h3>
+          <p>Fachgerechter Abbruch von Wand- und Bodenfliesen, inkl. Kleberest-Abtrag und Entsorgung. Auch Bad und Küche.</p>
+          <div class="tags"><span>Staubarm</span><span>Bad &amp; Küche</span></div>
+          <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+
+        <div class="svc" data-id="06">
+          <div class="row-top">
+            <span class="num">06</span>
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 3h8l-1 5H9L8 3z"/><path d="M7 8h10l1 13H6L7 8z"/><path d="M10 12v5M14 12v5"/></svg></span>
+          </div>
+          <h3>Reinigung</h3>
+          <p>Grund-, Bau- und Übergabereinigung für Wohnungen, Büros und Gewerbeflächen. Damit die Übergabe reibungslos läuft.</p>
+          <div class="tags"><span>Bauendreinigung</span><span>Übergabefertig</span></div>
+          <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROCESS ========== -->
+<section class="process" id="ablauf">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow">Ablauf · 004</span>
+        <h2 style="margin-top:24px">Vier Schritte.<br/><span class="i">Kein Kleingedrucktes.</span></h2>
+      </div>
+      <p class="blurb">Vom ersten Anruf bis zur Schlüsselübergabe bleibt alles übersichtlich — ein fester Ansprechpartner, ein schriftlicher Festpreis, ein vereinbarter Termin.</p>
+    </div>
+
+    <div class="process-grid">
+      <div class="step">
+        <span class="tn">Schritt 01</span>
+        <h4>Anruf oder Mail</h4>
+        <p>Sie schildern kurz Ihr Anliegen. Oft reichen ein paar Fotos, um eine erste Einschätzung zu geben.</p>
+        <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="step">
+        <span class="tn">Schritt 02</span>
+        <h4>Besichtigung</h4>
+        <p>Kostenfrei und unverbindlich vor Ort — auf Wunsch auch per Videocall, wenn es schneller gehen soll.</p>
+        <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="step">
+        <span class="tn">Schritt 03</span>
+        <h4>Festpreis-Angebot</h4>
+        <p>Schriftlich, transparent, ohne versteckte Positionen. Was drinsteht, gilt — auch wenn's mehr Arbeit wird.</p>
+        <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg></div>
+      </div>
+      <div class="step">
+        <span class="tn">Schritt 04</span>
+        <h4>Ausführung</h4>
+        <p>Zum vereinbarten Termin. Staubarm, pünktlich, besenrein — fertig zur Übergabe.</p>
+        <div class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12l-7-7M20 12l-7 7M20 12H4"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== WHY ========== -->
+<section class="why" id="warum">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <span class="eyebrow">Warum H&amp;A</span>
+        <h2 style="margin-top:24px">Wer anpackt,<br/>hält <span class="i">Wort.</span></h2>
+      </div>
+      <p class="blurb" style="color:var(--mute); max-width:46ch">Fünf Gründe, warum unsere Kunden bei der nächsten Übergabe direkt wieder anrufen — und uns weiterempfehlen.</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="big-fig">
+        <span class="tag">Weiterempfehlungsquote</span>
+        <div class="n" data-count="99" data-tail='<span class="pct">%</span>'>99<span class="pct">%</span></div>
+        <p class="cap">… unserer Kunden würden uns erneut beauftragen oder weiterempfehlen. Für uns die wichtigste Kennzahl.</p>
+      </div>
+
+      <div class="why-list">
+        <div class="item">
+          <div class="n">01</div>
+          <div>
+            <h4>Festpreis statt böser Überraschung</h4>
+            <p>Schriftliches Angebot nach Besichtigung, alle Leistungen und Entsorgungskosten inklusive. Nachforderungen gibt es nicht.</p>
+          </div>
+          <div class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5v14"/></svg></div>
+        </div>
+        <div class="item">
+          <div class="n">02</div>
+          <div>
+            <h4>Pünktlich, sauber, besenrein</h4>
+            <p>Wir kommen zum vereinbarten Termin, arbeiten staubarm und übergeben die Fläche so, dass sie direkt weitergenutzt werden kann.</p>
+          </div>
+          <div class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5v14"/></svg></div>
+        </div>
+        <div class="item">
+          <div class="n">03</div>
+          <div>
+            <h4>Alles aus einer Hand</h4>
+            <p>Räumen, entkernen, streichen, reinigen — ein Ansprechpartner. Das spart Zeit, Nerven und unnötige Absprachen.</p>
+          </div>
+          <div class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5v14"/></svg></div>
+        </div>
+        <div class="item">
+          <div class="n">04</div>
+          <div>
+            <h4>Fachgerechte Entsorgung</h4>
+            <p>Sperrmüll, Bauschutt, Tapeten- und Fliesenreste werden sortenrein entsorgt — auf Wunsch mit Entsorgungsnachweis.</p>
+          </div>
+          <div class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5v14"/></svg></div>
+        </div>
+        <div class="item">
+          <div class="n">05</div>
+          <div>
+            <h4>Persönlich erreichbar</h4>
+            <p>Kein Call-Center. Sie sprechen direkt mit dem Team, das auch vor Ort anpackt — klar, freundlich, auf Augenhöhe.</p>
+          </div>
+          <div class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5v14"/></svg></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section class="about" id="ueber">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <span class="eyebrow">Über uns</span>
+        <h2>Ein Team,<br/>das <span class="i">anpackt.</span></h2>
+        <p class="lead">H&amp;A Service &amp; Entrümpelung ist ein inhabergeführter Dienstleister für alles, was bei Auszug, Renovierung oder Übergabe anfällt. Aus vielen Einzelaufträgen ist über die Jahre ein eingespieltes Team geworden — mit Handschlag-Mentalität und einem klaren Anspruch: ordentlich hinterlassen, was wir bearbeiten.</p>
+        <p class="lead">Wir arbeiten für Privatkunden, Hausverwaltungen, Makler und Nachlassverwalter. Unsere Stärke ist das Zusammenspiel aus Räumung, Rückbau und Reinigung — also genau die Gewerke, die in der Praxis selten alleine auftreten.</p>
+
+        <div class="sig">
+          <div class="init">H&amp;A</div>
+          <div>
+            <b>Inhaberführung &amp; Team</b>
+            <span>Service &amp; Entrümpelung</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="facts">
+        <div class="fact accent">
+          <span class="t">Erfahrung</span>
+          <b>15+</b>
+          <span class="sub">Jahre im aktiven Einsatz</span>
+        </div>
+        <div class="fact">
+          <span class="t">Gewerke</span>
+          <b>6</b>
+          <span class="sub">aus einer Hand koordiniert</span>
+        </div>
+        <div class="fact">
+          <span class="t">Aufträge</span>
+          <b>1.2K</b>
+          <span class="sub">abgeschlossene Projekte</span>
+        </div>
+        <div class="fact">
+          <span class="t">Reaktion</span>
+          <b>48h</b>
+          <span class="sub">durchschnittl. Antwortzeit</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section class="contact" id="kontakt">
+  <span class="bg-word">anpacken.</span>
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <span class="eyebrow">Kontakt</span>
+        <h2>Reden wir<br/><span class="i">Klartext.</span></h2>
+        <p class="lead">Ein Anruf, eine kurze Mail oder das Formular rechts — wir schauen uns Ihr Projekt an und erstellen ein schriftliches Festpreis-Angebot. Kostenfrei und unverbindlich.</p>
+
+        <div class="ccards">
+          <a class="ccard" href="tel:+4915567336156">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13 1.05.37 2.07.73 3.06a2 2 0 0 1-.45 2.11L8.09 10.09a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.11-.45c.99.36 2.01.6 3.06.73A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div><span class="t">Telefon · Mo–Sa</span><b>015567336156</b></div>
+            <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </a>
+          <a class="ccard" href="/cdn-cgi/l/email-protection#2b42454d446b584e595d42484e06434a05484446">
+            <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+            <div><span class="t">E-Mail · Antwort ≤ 24 h</span><b><span class="__cf_email__" data-cfemail="6f060109002f1c0a1d19060c0a42070e410c0002">[email&#160;protected]</span></b></div>
+            <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
+          </a>
+        </div>
+
+        <div class="hours">
+          <div class="h"><span class="t">Mo – Fr</span><b>07:00 – 19:00</b></div>
+          <div class="h"><span class="t">Samstag</span><b>08:00 – 16:00</b></div>
+        </div>
+      </div>
+
+      <form class="form" id="anfrage" onsubmit="event.preventDefault(); this.classList.add('sent');">
+        <div class="form-head">
+          <div>
+            <h3>Kostenfreie Anfrage</h3>
+            <p class="ftag">Antwort innerhalb von 24 Stunden. Werktags oft noch schneller.</p>
+          </div>
+          <span class="badge">01 / Anfrage</span>
+        </div>
+
+        <div class="row">
+          <div class="field"><label for="name">Name</label><input id="name" type="text" placeholder="Max Mustermann" required></div>
+          <div class="field"><label for="tel">Telefon</label><input id="tel" type="tel" placeholder="0155 67336156" required></div>
+        </div>
+        <div class="field"><label for="email">E-Mail</label><input id="email" type="email" placeholder="max@mustermann.de"></div>
+        <div class="field"><label for="ort">Objektadresse / Ort</label><input id="ort" type="text" placeholder="Straße, PLZ, Ort"></div>
+
+        <div class="field">
+          <label>Gewünschte Leistung</label>
+          <div class="chips" id="chips">
+            <span class="chip">Entrümpelung</span>
+            <span class="chip">Malerarbeiten</span>
+            <span class="chip">Tapeten</span>
+            <span class="chip">Laminat</span>
+            <span class="chip">Fliesen</span>
+            <span class="chip">Reinigung</span>
+          </div>
+        </div>
+
+        <div class="field"><label for="msg">Beschreibung</label><textarea id="msg" placeholder="Kurz zum Objekt: Größe, Zustand, Wunschtermin …"></textarea></div>
+
+        <button class="submit" type="submit">
+          Anfrage senden
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:15px;height:15px"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+        <p class="note">Kostenfrei &amp; unverbindlich · Daten werden vertraulich behandelt.</p>
+        <div class="ok">Danke! Ihre Anfrage ist eingegangen — wir melden uns zeitnah.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer>
+  <div class="wrap">
+    <div class="wordmark">H<span class="amp">&amp;</span>A <span style="font-family:'Geist',sans-serif; font-style:normal; letter-spacing:-0.04em; font-weight:300">Service</span></div>
+
+    <div class="top">
+      <div>
+        <a class="brand foot" href="#top" style="display:flex; align-items:center; gap:12px">
+          <div class="mark"><img src="./97449.jpg" alt=""></div>
+          <div class="wm"><b>H&amp;A Service</b><span>Entrümpelung · Renovierung</span></div>
+        </a>
+        <p class="tag">Der zuverlässige Partner für Entrümpelung, Rückbau und Reinigung — ordentlich, pünktlich und zum fairen Festpreis.</p>
+      </div>
+      <div>
+        <h5>Leistungen</h5>
+        <ul>
+          <li><a href="#leistungen">Entrümpelung</a></li>
+          <li><a href="#leistungen">Malerarbeiten</a></li>
+          <li><a href="#leistungen">Tapetenentfernung</a></li>
+          <li><a href="#leistungen">Laminatentfernung</a></li>
+          <li><a href="#leistungen">Fliesenentfernung</a></li>
+          <li><a href="#leistungen">Reinigung</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Unternehmen</h5>
+        <ul>
+          <li><a href="#ueber">Über uns</a></li>
+          <li><a href="#ablauf">Ablauf</a></li>
+          <li><a href="#warum">Warum wir</a></li>
+          <li><a href="#kontakt">Angebot anfragen</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Kontakt</h5>
+        <ul>
+          <li><a href="tel:+4915567336156">015567336156</a></li>
+          <li><a href="/cdn-cgi/l/email-protection#0f666169604f7c6a7d79666c6a22676e216c6062"><span class="__cf_email__" data-cfemail="7d14131b123d0e180f0b141e1850151c531e1210">[email&#160;protected]</span></a></li>
+          <li>Mo – Sa · 07 – 19 Uhr</li>
+          <li>Einsatz bundesweit</li>
+        </ul>
+      </div>
+    </div>
+    <div class="bottom">
+      <div>© <span id="yr"></span> H&amp;A Service &amp; Entrümpelung — Alle Rechte vorbehalten</div>
+      <div style="display:flex; gap:22px"><a href="#">Impressum</a><a href="#">Datenschutz</a><a href="#">AGB</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== TWEAKS ========== -->
+<div class="tweaks" id="tw">
+  <h6>Tweaks</h6>
+  <div class="grp">
+    <label>Akzent</label>
+    <div class="swatches">
+      <div class="swatch" data-c="#FFD60A" style="background:#FFD60A"></div>
+      <div class="swatch" data-c="#FF7A1A" style="background:#FF7A1A"></div>
+      <div class="swatch" data-c="#A3E635" style="background:#A3E635"></div>
+      <div class="swatch" data-c="#60A5FA" style="background:#60A5FA"></div>
+      <div class="swatch" data-c="#F472B6" style="background:#F472B6"></div>
+    </div>
+  </div>
+  <div class="grp">
+    <label>Hintergrund</label>
+    <select id="tw-bg">
+      <option value="#F4F2EC">Warm (aktuell)</option>
+      <option value="#FFFFFF">Rein Weiß</option>
+      <option value="#EFEDE5">Stone</option>
+      <option value="#0A0A0A">Dark</option>
+    </select>
+  </div>
+  <div class="grp">
+    <label>Serif-Akzent</label>
+    <select id="tw-serif">
+      <option value="Instrument Serif">Instrument Serif</option>
+      <option value="Playfair Display">Playfair Display</option>
+      <option value="Fraunces">Fraunces</option>
+      <option value="DM Serif Display">DM Serif Display</option>
+    </select>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accentColor":"#FFD60A",
+  "paperColor":"#F4F2EC",
+  "serifFont":"Instrument Serif"
+}/*EDITMODE-END*/;
+</script>
+
+<!-- scroll progress -->
+<div class="scroll-progress"><div class="bar" id="sp"></div></div>
+<div class="section-label" id="secLabel">§ 00 — Intro</div>
+
+<script>
+  // Reveal hero immediately — must run before anything that could throw.
+  document.querySelectorAll('.split-word').forEach(el => el.classList.add('in'));
+  document.querySelector('.hl')?.classList.add('in');
+
+  const yrEl = document.getElementById('yr'); if (yrEl) yrEl.textContent = new Date().getFullYear();
+
+  const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* ----- scroll progress ----- */
+  const bar = document.getElementById('sp');
+  const onScroll = () => {
+    const h = document.documentElement;
+    const p = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+    bar.style.width = p + '%';
+    // nav shrink
+    document.querySelector('.nav').classList.toggle('shrunk', h.scrollTop > 40);
+  };
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* ----- parallax (gentle, rAF-throttled) ----- */
+  const bgWord = document.querySelector('.contact .bg-word');
+  const wordmark = document.querySelector('footer .wordmark');
+  let ticking = false;
+  function tick(){
+    const y = scrollY;
+    if (bgWord){ bgWord.style.transform = `translateX(${-y * 0.08}px)`; }
+    if (wordmark){ const r = wordmark.getBoundingClientRect(); const v = innerHeight - r.top; wordmark.style.transform = `translateX(${Math.max(-120, -v*0.05)}px)`; }
+    // marquee parallax
+    document.querySelectorAll('.marquee-track').forEach(t => {
+      t.style.animationDuration = (40 - Math.min(20, Math.abs(y*0.002))) + 's';
+    });
+    ticking = false;
+  }
+  addEventListener('scroll', () => { if(!ticking){ requestAnimationFrame(tick); ticking = true; } }, {passive:true});
+
+  /* ----- reveal on scroll ----- */
+  if ('IntersectionObserver' in window){
+    const ro = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); } });
+    }, {threshold:0.08});
+    document.querySelectorAll('h2, .svc, .fact, .step, .why-list .item, .ccard, .form, .big-fig, .hero-row, .marquee, .region, footer .wordmark').forEach(el => { el.classList.add('reveal'); ro.observe(el); });
+
+    // form chip stagger
+    const fo = new IntersectionObserver(entries => entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('in-view'); }), {threshold:.2});
+    document.querySelectorAll('.form').forEach(f => fo.observe(f));
+  }
+
+  /* ----- count-ups ----- */
+  function countUp(el, target, suffix=''){
+    const dur = 1400; const start = performance.now();
+    const from = 0;
+    function step(t){
+      const k = Math.min(1, (t - start)/dur);
+      const e = 1 - Math.pow(1 - k, 3);
+      const val = from + (target - from) * e;
+      let txt;
+      if (target >= 1000) txt = (val/1000).toFixed(val<999?0:1) + 'K';
+      else if (Number.isInteger(target)) txt = Math.round(val).toString();
+      else txt = val.toFixed(1);
+      el.textContent = txt + suffix;
+      if (k < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  // decorate numbers
+  const numTargets = [
+    {sel:'.big-fig .n', to:99, suffix:'', keepSuffix:true},
+  ];
+  const co = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if(!en.isIntersecting) return;
+      const el = en.target;
+      if (el.dataset.done) return;
+      el.dataset.done = '1';
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      const span = document.createElement('span'); span.className='cup';
+      const origTail = el.dataset.tail || '';
+      el.innerHTML = ''; el.appendChild(span);
+      if (origTail){ const t = document.createElement('span'); t.innerHTML = origTail; el.appendChild(t); }
+      countUp(span, target, suffix);
+      co.unobserve(el);
+    });
+  }, {threshold:.3});
+  document.querySelectorAll('[data-count]').forEach(el => co.observe(el));
+
+  /* ----- card mouse tracking ----- */
+  document.querySelectorAll('.svc').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    });
+  });
+
+  /* ----- magnetic buttons ----- */
+  if (!reduce){
+    document.querySelectorAll('.btn, .nav-cta, .ccard .go, .svc .arr').forEach(el => {
+      el.addEventListener('mousemove', (e) => {
+        const r = el.getBoundingClientRect();
+        const x = e.clientX - (r.left + r.width/2);
+        const y = e.clientY - (r.top + r.height/2);
+        el.style.transform = `translate(${x*0.25}px, ${y*0.25}px)`;
+      });
+      el.addEventListener('mouseleave', () => { el.style.transform = ''; });
+    });
+  }
+
+  /* ----- section label scrollspy ----- */
+  const label = document.getElementById('secLabel');
+  const sections = [
+    {sel:'#top', name:'§ 00 — Intro'},
+    {sel:'#leistungen', name:'§ 01 — Leistungen'},
+    {sel:'#ablauf', name:'§ 02 — Ablauf'},
+    {sel:'#warum', name:'§ 03 — Warum wir'},
+    {sel:'#ueber', name:'§ 04 — Über uns'},
+    {sel:'#kontakt', name:'§ 05 — Kontakt'},
+  ].map(s => ({...s, el: document.querySelector(s.sel)})).filter(s => s.el);
+  const so = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting){
+        const found = sections.find(s => s.el === en.target);
+        if (found){ label.textContent = found.name; }
+      }
+    });
+  }, {rootMargin:'-45% 0px -45% 0px'});
+  sections.forEach(s => so.observe(s.el));
+
+  /* ----- process grid progress line ----- */
+  const pg = document.querySelector('.process-grid');
+  if (pg){
+    const po = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting){
+        let p = 0;
+        const anim = () => { p = Math.min(100, p + 2); pg.style.setProperty('--p', p + '%'); if (p < 100) requestAnimationFrame(anim); };
+        requestAnimationFrame(anim);
+        po.unobserve(pg);
+      }
+    }), {threshold:.3});
+    po.observe(pg);
+  }
+
+  // chip select
+  document.querySelectorAll('#chips .chip').forEach(c => {
+    c.addEventListener('click', () => c.classList.toggle('on'));
+  });
+
+  // smooth anchor offset
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id.length > 1) {
+        const el = document.querySelector(id);
+        if (el) {
+          e.preventDefault();
+          const top = el.getBoundingClientRect().top + window.scrollY - 72;
+          window.scrollTo({top, behavior:'smooth'});
+        }
+      }
+    });
+  });
+
+  // services index scroll-spy + click
+  const idxItems = document.querySelectorAll('#svcIndex .idx');
+  const cards = document.querySelectorAll('.svc-cards .svc');
+  idxItems.forEach((it, i) => it.addEventListener('click', () => {
+    const target = cards[i];
+    if (!target) return;
+    const top = target.getBoundingClientRect().top + window.scrollY - 100;
+    window.scrollTo({top, behavior:'smooth'});
+  }));
+  if ('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(en => {
+        if (en.isIntersecting){
+          const id = en.target.getAttribute('data-id');
+          idxItems.forEach(it => it.classList.toggle('on', it.getAttribute('data-t') === id));
+        }
+      });
+    }, {rootMargin:'-45% 0px -45% 0px'});
+    cards.forEach(c => io.observe(c));
+  }
+
+  // reveal on scroll
+  if ('IntersectionObserver' in window){
+    const ro = new IntersectionObserver(entries => {
+      entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); } });
+    }, {threshold:0.08});
+    document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+    document.querySelectorAll('h2, .svc, .fact, .step, .why-list .item, .ccard, .form').forEach(el => { el.classList.add('reveal'); ro.observe(el); });
+  }
+
+  // ---------- Tweaks ----------
+  const tw = document.getElementById('tw');
+  function applyTweaks(v){
+    if(v.accentColor){ document.documentElement.style.setProperty('--accent', v.accentColor); }
+    if(v.paperColor){
+      document.documentElement.style.setProperty('--paper', v.paperColor);
+      if(v.paperColor === '#0A0A0A'){
+        document.documentElement.style.setProperty('--ink', '#F4F2EC');
+        document.documentElement.style.setProperty('--ink-2','#d7d7d2');
+        document.documentElement.style.setProperty('--line','#1e1e1e');
+        document.documentElement.style.setProperty('--card','#121212');
+        document.documentElement.style.setProperty('--paper-2','#141414');
+        document.body.style.color = '#F4F2EC';
+      }
+    }
+    if(v.serifFont){
+      const f = v.serifFont;
+      if(f !== 'Instrument Serif'){
+        const id='gf-'+f.replace(/\s+/g,'');
+        if(!document.getElementById(id)){
+          const l=document.createElement('link'); l.id=id; l.rel='stylesheet';
+          l.href='https://fonts.googleapis.com/css2?family='+f.replace(/\s+/g,'+')+':ital,wght@0,400;0,500;1,400&display=swap';
+          document.head.appendChild(l);
+        }
+      }
+      const style = document.getElementById('sfont-style') || (()=>{ const s=document.createElement('style'); s.id='sfont-style'; document.head.appendChild(s); return s; })();
+      style.textContent = `.i, .serif, .serif-i, h1 .i, h2 .i, h3 .i, .big-fig .n, .fact b, .contact .bg-word, footer .wordmark{font-family:"${f}",serif !important}`;
+    }
+    document.querySelectorAll('.swatch').forEach(s => s.classList.toggle('on', s.dataset.c===v.accentColor));
+  }
+  let state = {...TWEAK_DEFAULTS};
+  applyTweaks(state);
+
+  tw.querySelectorAll('.swatch').forEach(s => s.addEventListener('click', () => {
+    state.accentColor = s.dataset.c; applyTweaks(state);
+    window.parent.postMessage({type:'__edit_mode_set_keys', edits:{accentColor:state.accentColor}}, '*');
+  }));
+  tw.querySelector('#tw-bg').addEventListener('change', e => {
+    state.paperColor = e.target.value; applyTweaks(state);
+    window.parent.postMessage({type:'__edit_mode_set_keys', edits:{paperColor:state.paperColor}}, '*');
+  });
+  tw.querySelector('#tw-serif').addEventListener('change', e => {
+    state.serifFont = e.target.value; applyTweaks(state);
+    window.parent.postMessage({type:'__edit_mode_set_keys', edits:{serifFont:state.serifFont}}, '*');
+  });
+
+  window.addEventListener('message', (e) => {
+    const d = e.data || {};
+    if (d.type === '__activate_edit_mode'){ tw.classList.add('open'); }
+    if (d.type === '__deactivate_edit_mode'){ tw.classList.remove('open'); }
+  });
+  window.parent.postMessage({type:'__edit_mode_available'}, '*');
+</script>
+
+</body>
+</html>
