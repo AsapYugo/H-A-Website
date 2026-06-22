@@ -101,19 +101,15 @@ p{margin:0}
 .brand{display:flex; align-items:center; gap:14px}
 .brand .mark{
   width:56px; height:56px;
-  background:var(--ink);
+  background:transparent;
   display:grid; place-items:center; overflow:hidden;
   border-radius:13px;
-  box-shadow: 0 0 0 1px rgba(10,10,10,.15), 0 3px 14px rgba(10,10,10,.18);
+  box-shadow: none;
   flex-shrink:0;
   position:relative;
 }
-.brand .mark::after{
-  content:""; position:absolute; inset:0;
-  background:radial-gradient(circle at 70% 30%, rgba(255,214,10,.12) 0%, transparent 65%);
-  pointer-events:none;
-}
-.brand .mark img{width:100%; height:100%; object-fit:contain; padding:8px; position:relative; z-index:1}
+.brand .mark::after{ display:none }
+.brand .mark img{width:100%; height:100%; object-fit:contain; padding:0; position:relative; z-index:1}
 .brand .wm{display:flex; flex-direction:column; line-height:1.05}
 .brand .wm b{font-weight:700; font-size:16px; letter-spacing:-0.02em}
 .brand .wm span{font-family:"Geist Mono", monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); margin-top:4px}
@@ -495,7 +491,7 @@ footer ul{list-style:none; padding:0; margin:0; display:grid; gap:10px}
 footer ul a{font-size:14px; transition:color .15s; color:#9e9e97}
 footer ul a:hover{color:var(--accent)}
 footer .tag{color:#9e9e97; font-size:14px; margin-top:18px; max-width:34ch; line-height:1.6}
-footer .brand.foot .mark{background:rgba(255,255,255,.10); width:56px; height:56px; border-radius:13px; box-shadow:0 0 0 1px rgba(255,255,255,.12)}
+footer .brand.foot .mark{background:transparent; width:56px; height:56px; border-radius:13px; box-shadow:none}
 footer .brand.foot .wm b{color:#fff}
 footer .brand.foot .wm span{color:#9e9e97}
 footer .bottom{
@@ -694,7 +690,7 @@ footer .wordmark.in{opacity:1; transform:none}
 <nav class="nav">
   <div class="wrap">
     <a href="#top" class="brand">
-      <div class="mark"><img src="assets/logo.jpg" alt=""></div>
+      <div class="mark"><img src="97449.jpg" alt=""></div>
       <div class="wm"><b>H&amp;A Service</b><span>Entrümpelung · Renovierung</span></div>
     </a>
     <div class="navlinks">
@@ -1085,7 +1081,7 @@ footer .wordmark.in{opacity:1; transform:none}
     <div class="top">
       <div>
         <a class="brand foot" href="#top" style="display:flex; align-items:center; gap:12px">
-          <div class="mark"><img src="assets/logo.jpg" alt=""></div>
+          <div class="mark"><img src="97449.jpg" alt=""></div>
           <div class="wm"><b>H&amp;A Service</b><span>Entrümpelung · Renovierung</span></div>
         </a>
         <p class="tag">Der zuverlässige Partner für Entrümpelung, Rückbau und Reinigung — ordentlich, pünktlich und zum fairen Festpreis.</p>
