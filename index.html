@@ -664,6 +664,53 @@ footer .wordmark.in{opacity:1; transform:none}
 .tweaks .swatch.on{border-color:var(--ink)}
 .tweaks label{font-family:"Geist Mono",monospace; font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute)}
 .tweaks select{font:inherit; padding:8px 10px; border:1px solid rgba(10,10,10,.14); border-radius:8px; background:#fff}
+
+    .instagram-contact {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      margin-top: 14px;
+      padding: 24px;
+      background: var(--paper-2);
+      border-radius: var(--radius);
+      text-align: center;
+    }
+    .instagram-contact img {
+      width: min(180px, 100%);
+      height: auto;
+      padding: 8px;
+      background: #fff;
+      border-radius: 12px;
+    }
+    .instagram-contact a {
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .instagram-contact a:hover { color: var(--ink-2); }
+
+
+    .why-list .item {
+      grid-template-columns: 64px 1fr;
+      cursor: default;
+      border-radius: 12px;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .why-list .item:hover {
+      background: rgba(255, 214, 10, .12);
+      transform: translateX(4px);
+    }
+    .why-list .item h4::after {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 2px;
+      margin-top: 12px;
+      background: var(--accent);
+    }
+
 </style>
 </head>
 <body>
@@ -794,7 +841,7 @@ footer .wordmark.in{opacity:1; transform:none}
       </div>
       <div class="note">
         <span class="count">01 — 06 · ausgewählt</span>
-        <p>Wir übernehmen, was bei Umzug, Übergabe oder Renovierung wirklich anfällt — von der Räumung über den handwerklichen Rückbau bis zur Übergabereinigung. Alles aus einer Hand, zum Festpreis.</p>
+        <p>Wir übernehmen, was bei Übergabe oder Renovierung wirklich anfällt — von der Räumung über den handwerklichen Rückbau bis zur Übergabereinigung. Alles aus einer Hand, zum Festpreis.</p>
       </div>
     </div>
 
@@ -827,7 +874,6 @@ footer .wordmark.in{opacity:1; transform:none}
               <div>Sortenreine Entsorgung mit Nachweis</div>
             </div>
           </div>
-          <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
         </div>
 
         <div class="svc" data-id="02">
@@ -838,7 +884,6 @@ footer .wordmark.in{opacity:1; transform:none}
           <h3>Malerarbeiten</h3>
           <p>Wände, Decken und Akzentflächen — sauber abgeklebt, zweifach gestrichen. Farbberatung auf Wunsch.</p>
           <div class="tags"><span>Innenräume</span><span>Farbberatung</span></div>
-          <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
         </div>
 
         <div class="svc" data-id="03">
@@ -849,7 +894,6 @@ footer .wordmark.in{opacity:1; transform:none}
           <h3>Tapetenentfernung</h3>
           <p>Gründliches Ablösen von Raufaser, Vlies und schwierigen Altbelägen. Wand wird streichfertig übergeben.</p>
           <div class="tags"><span>Rückstandsfrei</span><span>Streichfertig</span></div>
-          <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
         </div>
 
         <div class="svc" data-id="04">
@@ -860,7 +904,6 @@ footer .wordmark.in{opacity:1; transform:none}
           <h3>Laminatentfernung</h3>
           <p>Rückbau von Laminat, Klick-Vinyl und Trittschall. Untergrund wird für den nächsten Belag vorbereitet.</p>
           <div class="tags"><span>Inkl. Entsorgung</span><span>Untergrund bereit</span></div>
-          <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
         </div>
 
         <div class="svc" data-id="05">
@@ -871,7 +914,6 @@ footer .wordmark.in{opacity:1; transform:none}
           <h3>Fliesenentfernung</h3>
           <p>Fachgerechter Abbruch von Wand- und Bodenfliesen, inkl. Kleberest-Abtrag und Entsorgung. Auch Bad und Küche.</p>
           <div class="tags"><span>Staubarm</span><span>Bad &amp; Küche</span></div>
-          <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
         </div>
 
         <div class="svc" data-id="06">
@@ -882,7 +924,6 @@ footer .wordmark.in{opacity:1; transform:none}
           <h3>Reinigung</h3>
           <p>Grund-, Bau- und Übergabereinigung für Wohnungen, Büros und Gewerbeflächen. Damit die Übergabe reibungslos läuft.</p>
           <div class="tags"><span>Bauendreinigung</span><span>Übergabefertig</span></div>
-          <span class="arr"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
         </div>
 
       </div>
@@ -955,7 +996,6 @@ footer .wordmark.in{opacity:1; transform:none}
             <h4>Festpreis statt böser Überraschung</h4>
             <p>Schriftliches Angebot nach Besichtigung, alle Leistungen und Entsorgungskosten inklusive. Nachforderungen gibt es nicht.</p>
           </div>
-          <div class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5v14"/></svg></div>
         </div>
         <div class="item">
           <div class="n">02</div>
@@ -963,7 +1003,6 @@ footer .wordmark.in{opacity:1; transform:none}
             <h4>Pünktlich, sauber, besenrein</h4>
             <p>Wir kommen zum vereinbarten Termin, arbeiten staubarm und übergeben die Fläche so, dass sie direkt weitergenutzt werden kann.</p>
           </div>
-          <div class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5v14"/></svg></div>
         </div>
         <div class="item">
           <div class="n">03</div>
@@ -971,7 +1010,6 @@ footer .wordmark.in{opacity:1; transform:none}
             <h4>Alles aus einer Hand</h4>
             <p>Räumen, entkernen, streichen, reinigen — ein Ansprechpartner. Das spart Zeit, Nerven und unnötige Absprachen.</p>
           </div>
-          <div class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5v14"/></svg></div>
         </div>
         <div class="item">
           <div class="n">04</div>
@@ -979,7 +1017,6 @@ footer .wordmark.in{opacity:1; transform:none}
             <h4>Fachgerechte Entsorgung</h4>
             <p>Sperrmüll, Bauschutt, Tapeten- und Fliesenreste werden sortenrein entsorgt — auf Wunsch mit Entsorgungsnachweis.</p>
           </div>
-          <div class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5v14"/></svg></div>
         </div>
         <div class="item">
           <div class="n">05</div>
@@ -987,7 +1024,6 @@ footer .wordmark.in{opacity:1; transform:none}
             <h4>Persönlich erreichbar</h4>
             <p>Kein Call-Center. Sie sprechen direkt mit dem Team, das auch vor Ort anpackt — klar, freundlich, auf Augenhöhe.</p>
           </div>
-          <div class="plus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5v14"/></svg></div>
         </div>
       </div>
     </div>
@@ -1055,7 +1091,7 @@ footer .wordmark.in{opacity:1; transform:none}
             <div><span class="t">Telefon · Mo–Sa</span><b>015567336156</b></div>
             <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
           </a>
-          <a class="ccard" href="/cdn-cgi/l/email-protection#2b42454d446b584e595d42484e06434a05484446">
+          <a class="ccard" href="mailto:info@service-ha.com">
             <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
             <div><span class="t">E-Mail · Antwort ≤ 24 h</span><b><span class="__cf_email__" >info@service-ha.com</span></b></div>
             <span class="go"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg></span>
@@ -1066,6 +1102,11 @@ footer .wordmark.in{opacity:1; transform:none}
           <div class="h"><span class="t">Mo – Fr</span><b>07:00 – 19:00</b></div>
           <div class="h"><span class="t">Samstag</span><b>08:00 – 16:00</b></div>
         </div>
+        <div class="instagram-contact">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&amp;data=https%3A%2F%2Fwww.instagram.com%2Fha.service.entruemplung%2F" alt="QR-Code zum Instagram-Profil von HA Service Entrümpelung" width="180" height="180" loading="lazy">
+          <a href="https://www.instagram.com/ha.service.entruemplung/" target="_blank" rel="noopener noreferrer">Auf Instagram folgen: @ha.service.entruemplung</a>
+        </div>
+
       </div>
 
       
